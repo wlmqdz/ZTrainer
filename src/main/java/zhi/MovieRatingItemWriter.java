@@ -1,18 +1,23 @@
 package zhi;
 
 import java.util.List;
+
 import org.springframework.batch.item.ItemWriter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import zhi.model.MovieRating;
+
+import zhi.model.MovieRatingItem;
 
 @Component("movieRatingItemWriter")
-public class MovieRatingItemWriter implements ItemWriter<MovieRating> {
+public class MovieRatingItemWriter implements ItemWriter<MovieRatingItem> {
+
+	@Autowired
+	MovieSimilarityService movieSimilarityService;
 
 	@Override
-	public void write(List<? extends MovieRating> items) throws Exception {
-		for (MovieRating rating : items) {
-			System.out.println("user id " + rating.getUserId() + " movie id " + rating.getMovieId());
+	public void write(List<? extends MovieRatingItem> items) throws Exception {
+		for (MovieRatingItem rating : items) {
+			movieSimilarityService.addMovieRating(rating);
 		}
 	}
-
 }

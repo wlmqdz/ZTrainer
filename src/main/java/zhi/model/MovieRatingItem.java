@@ -1,6 +1,6 @@
 package zhi.model;
 
-public class MovieRating {
+public class MovieRatingItem {
 	private Long userId;
 	private Long movieId;
 	private Double rating;
