@@ -6,7 +6,19 @@ public class Movie {
 	private Long id;
 	private String title;
 	private String genres;
+	private Map<Long, Double> similarMovies;
 	private Map<Long, Double> ratings;
+
+	public Movie() {
+
+	}
+
+	public Movie(String line) {
+		String[] items = line.split(",");
+		id = Long.parseLong(items[0]);
+		title = items[1];
+		genres = items[2];
+	}
 
 	public Long getId() {
 		return id;
@@ -40,4 +52,11 @@ public class Movie {
 		this.ratings = ratings;
 	}
 
+	public Map<Long, Double> getSimilarMovies() {
+		return similarMovies;
+	}
+
+	public void setSimilarMovies(Map<Long, Double> similarMovies) {
+		this.similarMovies = similarMovies;
+	}
 }

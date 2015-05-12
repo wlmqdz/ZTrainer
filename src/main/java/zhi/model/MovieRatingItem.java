@@ -5,6 +5,17 @@ public class MovieRatingItem {
 	private Long movieId;
 	private Double rating;
 
+	public MovieRatingItem() {
+
+	}
+
+	public MovieRatingItem(String line) {
+		String[] items = line.split(",");
+		userId = Long.parseLong(items[0]);
+		movieId = Long.parseLong(items[1]);
+		rating = Double.parseDouble(items[2]);
+	}
+
 	public Long getUserId() {
 		return userId;
 	}
